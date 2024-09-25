@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Climate Change - Page Navigation with Sidebar</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 200%;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+    }
+
+    .navbar {
+      position: relative;
+      width: 100%;
+      background-color: #333;
+      padding: 10px 0;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    .navbar a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .navbar a:hover {
+      background-color: #575757;
+      transition: 0.3s;
+    }
+
+    .banner-hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      background-image: url('https://climatenetwork.org/wp-content/uploads/2020/09/36811390855_c4b727efed_5k-1024x682.jpg');
+      overflow: hidden;
+    }
+
+    .banner-hero video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .content {
+      position: relative;
+      color: white;
+      text-align: center;
+      top: 40%;
+      z-index: 1;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s, opacity 0.5s;
+      z-index: 10;
+    }
+
+    .sidebar.right {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    .sidebar.right.show {
+      display: flex;
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .sidebar.left {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    .sidebar.left.show {
+      display: flex;
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .contact-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 50;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      width: 300px;
+      padding: 20px;
+      background-color: white;
+      z-index: 100;
+    }
+
+    /* PDF display container */
+    .pdf-container {
+      display:inline-block; /* Hidden by default */
+      height: 100%;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      overflow-y: scroll;
+    }
+
+    .pdf-content {
+      width: 90%;
+      height: 90%;
+      background: white;
+      padding: 20px;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+    }
+
+    .pdf-content iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .title {
+      font-size: 50px;
+
+
+    }
+    
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="#home">home</a>
+    <a href="#sidebar1">Script video</a>
+    <a href="#video-section">Watch Video</a>
+  </div>
+
+  <section class="banner-hero has-video" id="home">
+    <div class="overlay"></div>
+    <video playsinline autoplay muted loop preload="auto">
+      <source src="https://climatenetwork.org/wp-content/uploads/2021/01/Homepage-banner.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="content">
+      <h1 class="title"><u>Climate Change and Greenhouse Gases</u></h1>
+      <p><h2>Let's take action to protect our planet for future generations</h2></p>
+    </div>
+  </section>
+
+  <div class="sidebar right" id="sidebar1">
+    <!-- PDF Section -->
+  
+    <div class="pdf-content">
+      <iframe src="C:\Users\Golden-Tech\Desktop\Tell_us_a_climate_story_Final.pdf" title="E-book Viewer"></iframe>
+  </div>
+  </div>
+
+  <div class="sidebar left video-sidebar" id="sidebar2">
+    <iframe id="video" src="C:\Users\Golden-Tech\Desktop\WhatsApp Video 2024-09-25 at 08.31.57_de9f38a3.mp4" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+
+  <button class="contact-btn" id="contactBtn">Contact Us</button>
+  <div class="popup-overlay" id="popupOverlay"></div>
+  <div class="popup" id="contactPopup">
+    <h2>Contact Us</h2>
+    <p>Email: contact@climatechange.org</p>
+    <p>Phone: +123456789</p>
+    <button id="closePopupBtn">Close</button>
+  </div>
+
+  <script>
+    const contactBtn = document.getElementById('contactBtn');
+    const popup = document.getElementById('contactPopup');
+    const overlay = document.getElementById('popupOverlay');
+    const closeBtn = document.getElementById('closePopupBtn');
+
+    contactBtn.addEventListener('click', () => {
+      popup.style.display = 'block';
+      overlay.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', () => {
+      popup.style.display = 'none';
+      overlay.style.display = 'none';
+    });
+
+    overlay.addEventListener('click', () => {
+      popup.style.display = 'none';
+      overlay.style.display = 'none';
+    });
+
+    window.addEventListener('scroll', function() {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const sidebar1 = document.getElementById('sidebar1');
+      const sidebar2 = document.getElementById('sidebar2');
+
+      // Show first sidebar when scrolling past 500px
+      if (scrollY > 500 && scrollY < 1000) {
+        sidebar1.style.display = 'flex';
+        sidebar1.classList.add('show');
+      } else {
+        sidebar1.classList.remove('show');
+        setTimeout(() => {
+          if (!sidebar1.classList.contains('show')) sidebar1.style.display = 'none';
+        }, 350);
+      }
+
+      // Show the second sidebar in full page once scrolling past 1500px and hide the first
+      if (scrollY >= 900) {
+        sidebar1.classList.remove('show');
+        setTimeout(() => {
+          sidebar1.style.display = 'none';
+          sidebar2.style.display = 'flex';
+          sidebar2.classList.add('show');
+        }, 500); // Ensure sidebar1 is fully hidden before displaying sidebar2
+      } else {
+        sidebar2.classList.remove('show');
+        setTimeout(() => {
+          if (!sidebar2.classList.contains('show')) sidebar2.style.display = 'none';
+        }, 350);
+      }
+    });
+  </script>
+
+</body>
+</html>
